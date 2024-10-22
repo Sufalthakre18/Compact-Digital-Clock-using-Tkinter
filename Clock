@@ -1,0 +1,33 @@
+import tkinter as tk
+from datetime import datetime
+
+def Date_time():
+    time = datetime.now()
+    formatted_time = time.strftime('%I:%M:%S %p')
+    formatted_date = time.strftime('%d/%m/%Y')
+    formatted_day = time.strftime('%A')
+
+    time_label.config(text=formatted_time)
+    date_label.config(text=formatted_date)
+    day_label.config(text=formatted_day)
+    time_label.after(1000, Date_time)
+
+root = tk.Tk()
+root.title('Compact Digital Clock')
+root.geometry('400x200')
+root.config(bg='#1E88E5')
+
+frame = tk.Frame(root, bg='#29B6F6')
+frame.pack(expand=True, fill='both')
+
+time_label = tk.Label(frame, font=('Verdana', 30, 'bold'), bg='#29B6F6', fg='white')
+time_label.pack(pady=10)
+
+date_label = tk.Label(frame, font=('Verdana', 20, 'bold'), bg='#29B6F6', fg='white')
+date_label.pack()
+
+day_label = tk.Label(frame, font=('Verdana', 20, 'bold'), bg='#29B6F6', fg='white')
+day_label.pack()
+
+Date_time()
+root.mainloop()
